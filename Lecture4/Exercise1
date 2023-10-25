@@ -1,0 +1,44 @@
+public class StringManipulation {
+
+	public static void main(String[] args) {
+
+		String originalWord = "Computer";
+
+        System.out.println("Original: " + originalWord);
+        System.out.println("In small letters: " + originalWord.toLowerCase());
+        System.out.println("In capital letters: " + originalWord.toUpperCase());
+
+        int length = originalWord.length();
+        System.out.println("Length: " + length);
+
+        char firstLetter = originalWord.charAt(0);
+        char middleLetter = originalWord.charAt(length / 2);
+        char lastLetter = originalWord.charAt(length - 1);
+
+        System.out.println("First letter: " + firstLetter);
+        System.out.println("Middle letter: " + middleLetter);
+        System.out.println("Last letter: " + lastLetter);
+
+        boolean startsWithCom = originalWord.startsWith("Com");
+        System.out.println("The word starts with \"Com\": " + startsWithCom);
+
+        boolean endsWithIon = originalWord.endsWith("ion");
+        System.out.println("The word ends with \"ion\": " + endsWithIon);
+
+        String swappedWord = originalWord.replace('e', 'o');
+        System.out.println("Swapping 'e' with 'o': " + swappedWord);
+
+        String replacedWord = originalWord.replace("Comp", "Calcula");
+        System.out.println("Swapping Comp\" with \"Calcula\": " + replacedWord);
+
+       
+        String newWord = originalWord.substring(0, 2);
+
+        newWord = newWord.replace('e', 'o');
+        System.out.println("Swap all 'e' letters with 'o': " + newWord);
+
+        replacedWord = replacedWord.replace("Compu", "Calcula");
+        System.out.println("Swap the \"Compu\" segment with \"Calcula\": " + replacedWord);
+	}
+
+}
