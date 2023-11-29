@@ -1,0 +1,44 @@
+import java.io.*;
+public class StudentFileStream {
+public void printData(Student student) {
+        System.out.println("Student Info:");
+        System.out.println("Name: " + student.getName());
+        System.out.println("Phone Number: " + student.getPhoneNum());
+        System.out.println("Index Number: " + student.getIndexNum());
+        System.out.println("Record Number: " + student.getRecordNum());
+    }
+ public void writeToFile(Student student, String filename) {
+ try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))) {
+            oos.writeObject(student);
+            System.out.println("Student object has been serialized and written to file.");
+            System.out.println("Serialized Student Details:");
+            printData(student);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Student readFromFile(String filename) {
+    try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))) {
+            Student student = (Student) ois.readObject();
+            System.out.println("Student object has been deserialized from file.");
+            System.out.println("Deserialized Student Details:");
+            printData(student);
+            return student;
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null; }
+}
+class Demo {
+    public static void main(String[] args) {
+        Student student = new Student("John Doe", "123-456-7890", 101, 567);
+        StudentFileStream fileStream = new StudentFileStream();
+
+       
+        fileStream.writeToFile(student, "student_data.txt");
+
+        
+        Student deserializedStudent = fileStream.readFromFile("student_data.txt");
+    }
+}
